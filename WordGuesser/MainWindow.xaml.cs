@@ -20,9 +20,23 @@ namespace WordGuesser
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private MediaPlayer mediaPlayer = new MediaPlayer();
+
         public MainWindow()
         {
             InitializeComponent();
+            Name1.Text = Properties.Settings.Default.aName;
+            Name2.Text = Properties.Settings.Default.bName;
+            Name3.Text = Properties.Settings.Default.cName;
+            Name4.Text = Properties.Settings.Default.dName;
+            Name5.Text = Properties.Settings.Default.eName;
+
+            Score1.Text = Properties.Settings.Default.aScore.ToString();
+            Score2.Text = Properties.Settings.Default.bScore.ToString();
+            Score3.Text = Properties.Settings.Default.cScore.ToString();
+            Score4.Text = Properties.Settings.Default.dScore.ToString();
+            Score5.Text = Properties.Settings.Default.eScore.ToString();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -112,6 +126,8 @@ namespace WordGuesser
         private void A_Click(object sender, RoutedEventArgs e)
         {
             A.IsEnabled = false;
+            mediaPlayer.Open(new Uri(@"sounds/click.wav"));
+            mediaPlayer.Play();
             //CheckifLetterIsInWord('A');
         }
         private void B_Click(object sender, RoutedEventArgs e)
@@ -238,11 +254,6 @@ namespace WordGuesser
         {
             Z.IsEnabled = false;
             //CheckifLetterIsInWord('Z');
-        }
-
-        private void TextBlock_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
-        {
-
         }
     }
 }

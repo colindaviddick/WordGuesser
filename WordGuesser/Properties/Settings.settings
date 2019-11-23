@@ -1,7 +1,36 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WordGuesser.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="aName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Anon</Value>
+    </Setting>
+    <Setting Name="bName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Anon</Value>
+    </Setting>
+    <Setting Name="cName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Anon</Value>
+    </Setting>
+    <Setting Name="dName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Anon</Value>
+    </Setting>
+    <Setting Name="eName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Anon</Value>
+    </Setting>
+    <Setting Name="aScore" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="bScore" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
+    <Setting Name="cScore" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="dScore" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="eScore" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

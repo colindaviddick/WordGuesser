@@ -8,6 +8,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
+
+        <Style TargetType="materialDesign:Card" x:Key="HighScores">
+            <Setter Property="Margin" Value="0 5 10 0"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Width" Value="160"/>
+        </Style>
+
         <Style TargetType="Label">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="14"/>
@@ -17,6 +25,14 @@
         <Style TargetType="TextBlock" x:Key="HeaderText">
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Heavy"/>
+            <Setter Property="FontFamily" Value="Avillar"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="ScoreStyle">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="0 -15 0 0"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Foreground" Value="Gray"/>
             <Setter Property="FontWeight" Value="Heavy"/>
             <Setter Property="FontFamily" Value="Avillar"/>
         </Style>
@@ -33,6 +49,35 @@
     </Window.Resources>
     <Grid>
 
+        <!--On First Opening Game-->
+        <Grid x:Name="OnFirstOpen" Visibility="Hidden" Panel.ZIndex="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Border Background="#DDFFFFFF" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="3">
+            </Border>
+            <StackPanel Grid.Column="1" Grid.Row="1">
+                <Border>
+                    <StackPanel>
+                        <materialDesign:Card Margin="10">
+                            <TextBlock Style="{DynamicResource HeaderText}">Hangman</TextBlock>
+                        </materialDesign:Card>
+                        <Button Margin="20 5 20 5" Click="PlayNewGameMenuButton_Click">Play New Game</Button>
+                        <Button Margin="20 5 20 5" Click="PreferencesMenuButton_Click">Preferences</Button>
+                        <Button Margin="20 5 20 5" Click="AboutMenuButton_Click">About</Button>
+                        <Button Margin="20 5 20 5" Click="QuitMenuButton_Click">Quit</Button>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+
         <!--Game Window Display-->
         <Grid x:Name="Game" Visibility="Visible">
             <Grid.RowDefinitions>
@@ -42,8 +87,10 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-
-            <Button Grid.Row="0" Width="120" Margin="2" HorizontalAlignment="Left" Click="Button_Click">Options</Button>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="180"/>
+            </Grid.ColumnDefinitions>
             <materialDesign:Card Width="300" Grid.Row="0">
                 <TextBlock Style="{DynamicResource HeaderText}">Hangman</TextBlock>
             </materialDesign:Card>
@@ -87,11 +134,62 @@
                 </DockPanel>
             </StackPanel>
             <!--Keyboard-->
-
+            <Button Grid.Row="0" Width="120" Margin="2" Grid.Column="1" HorizontalAlignment="Center" Click="Button_Click">Options</Button>
+            <StackPanel Grid.Column="1" Grid.Row="1">
+                <materialDesign:Card Style="{DynamicResource HighScores}">
+                    <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Heavy">High Scores</TextBlock>
+                </materialDesign:Card>
+                <materialDesign:Card Style="{DynamicResource HighScores}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Heavy">1:</TextBlock>
+                        <StackPanel Width="120">
+                            <TextBlock x:Name="Name1" FontSize="15" Margin="10 0 0 0" FontWeight="DemiBold">Colin</TextBlock>
+                            <TextBlock x:Name="Score1" Style="{DynamicResource ScoreStyle}">250</TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+                <materialDesign:Card Style="{DynamicResource HighScores}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Heavy">2:</TextBlock>
+                        <StackPanel Width="120">
+                            <TextBlock x:Name="Name2" FontSize="15" Margin="10 0 0 0" FontWeight="DemiBold">Colin</TextBlock>
+                            <TextBlock x:Name="Score2" Style="{DynamicResource ScoreStyle}">250</TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+                <materialDesign:Card Style="{DynamicResource HighScores}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Heavy">3:</TextBlock>
+                        <StackPanel Width="120">
+                            <TextBlock x:Name="Name3" FontSize="15" Margin="10 0 0 0" FontWeight="DemiBold">Colin</TextBlock>
+                            <TextBlock x:Name="Score3" Style="{DynamicResource ScoreStyle}">250</TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+                <materialDesign:Card Style="{DynamicResource HighScores}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Heavy">3:</TextBlock>
+                        <StackPanel Width="120">
+                            <TextBlock x:Name="Name4" FontSize="15" Margin="10 0 0 0" FontWeight="DemiBold">Colin</TextBlock>
+                            <TextBlock x:Name="Score4" Style="{DynamicResource ScoreStyle}">250</TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+                <materialDesign:Card Style="{DynamicResource HighScores}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Heavy">3:</TextBlock>
+                        <StackPanel Width="120">
+                            <TextBlock x:Name="Name5" FontSize="15" Margin="10 0 0 0" FontWeight="DemiBold">Colin</TextBlock>
+                            <TextBlock x:Name="Score5" Style="{DynamicResource ScoreStyle}">250</TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+                <Button>Back</Button>
+            </StackPanel>
         </Grid>
 
         <!--Options Display-->
-        <Grid x:Name="Options" Visibility="Visible" Panel.ZIndex="5">
+        <Grid x:Name="Options" Visibility="Hidden" Panel.ZIndex="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -121,7 +219,7 @@
         </Grid>
 
         <!--Preferences Display-->
-        <Grid x:Name="Preferences" Visibility="Visible" Panel.ZIndex="5">
+        <Grid x:Name="Preferences" Visibility="Hidden" Panel.ZIndex="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -161,7 +259,7 @@
                                 </StackPanel>
                                 <Label>Customize your game</Label>
                                 <TextBlock Style="{DynamicResource PreferencesText}" TextWrapping="Wrap">Choose a graphics pack.</TextBlock>
-                                
+
                                 <!--COULD PROBABLY DO WITH BIG BUTTONS HERE, WITH A CLEARER IMAGE OF THE THEME-->
                                 <StackPanel Orientation="Vertical">
                                     <StackPanel Orientation="Horizontal">
@@ -284,75 +382,6 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <StackPanel Grid.Column="1" Grid.Row="1">
-                <materialDesign:Card Padding="5">
-                    <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Heavy">Top 10 Scores</TextBlock>
-                </materialDesign:Card>
-                <materialDesign:Card>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Heavy">1:</TextBlock>
-                        <TextBlock FontSize="15" Margin="10 0 0 0" FontWeight="DemiBold"/>
-                    </StackPanel>
-                </materialDesign:Card>
-
-                <materialDesign:Card>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Heavy">2:</TextBlock>
-                        <TextBlock FontSize="15" Margin="10 0 0 0" FontWeight="DemiBold"/>
-                    </StackPanel>
-                </materialDesign:Card>
-                <materialDesign:Card>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Heavy">3:</TextBlock>
-                        <TextBlock FontSize="15" Margin="10 0 0 0" FontWeight="DemiBold"/>
-                    </StackPanel>
-                </materialDesign:Card>
-                <materialDesign:Card>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Heavy">4:</TextBlock>
-                        <TextBlock FontSize="15" Margin="10 0 0 0" FontWeight="DemiBold"/>
-                    </StackPanel>
-                </materialDesign:Card>
-                <materialDesign:Card>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Heavy">5:</TextBlock>
-                        <TextBlock FontSize="15" Margin="10 0 0 0" FontWeight="DemiBold"/>
-                    </StackPanel>
-                </materialDesign:Card>
-                <materialDesign:Card>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Heavy">6:</TextBlock>
-                        <TextBlock FontSize="15" Margin="10 0 0 0" FontWeight="DemiBold"/>
-                    </StackPanel>
-                </materialDesign:Card>
-                <materialDesign:Card>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Heavy">7:</TextBlock>
-                        <TextBlock FontSize="15" Margin="10 0 0 0" FontWeight="DemiBold"/>
-                    </StackPanel>
-                </materialDesign:Card>
-                <materialDesign:Card>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Heavy">8:</TextBlock>
-                        <TextBlock FontSize="15" Margin="10 0 0 0" FontWeight="DemiBold"/>
-                    </StackPanel>
-                </materialDesign:Card>
-                <materialDesign:Card>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Heavy">9:</TextBlock>
-                        <TextBlock FontSize="15" Margin="10 0 0 0" FontWeight="DemiBold"/>
-                    </StackPanel>
-                </materialDesign:Card>
-                <materialDesign:Card>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock HorizontalAlignment="Left" FontSize="15" FontWeight="Heavy">10:</TextBlock>
-                        <TextBlock FontSize="15" Margin="10 0 0 0" FontWeight="DemiBold"/>
-                    </StackPanel>
-                </materialDesign:Card>
-                <Button>Back</Button>
-            </StackPanel>
-
-
         </Grid>
 
     </Grid>
